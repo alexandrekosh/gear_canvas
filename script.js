@@ -1,77 +1,159 @@
 const canvas = document.querySelector('canvas');
 const vista = canvas.getContext('2d');
 
-let scala = 1.7,
-    d_primitivo = 125.00 
-    d_interno = 113.40 
-    d_externo = 135
-    d_base = 120.74
-    d = 50
-    g = 7.86
-    altura_chaveta = 15.00 * scala
-    largura_chaveta = 7.50 * scala
+let escala = 3,
+    r_primitivo = (125.00 / 2) * escala
+    r_interno = (113.40 / 2) * escala
+    r_externo = (135 / 2) * escala
+    r_base = (120.74 / 2) * escala
+    r = (50 / 2) * escala
+    g = 7.86 * escala
+    passo = 15.71 * escala
+    expessura = 7.86 * escala
+    altura_chaveta = 15.00 * escala
+    largura_chaveta = 7.50 * escala
 
 
-function drawFuro(scala, d) {
-  vista.beginPath()
-  vista.strokeStyle = 'black'
-  vista.fillStyle = 'black'
-  vista.arc(250, 250, d * scala , 0, 2*Math.PI) // furo
+
+function lineCenter() {
+  vista.moveTo(250, 0)
+  vista.lineTo(250, 500)
   vista.stroke()
-  vista.fill()
-}
 
-function drawInterno(scala, d_interno) {
   vista.beginPath()
-  vista.arc(250, 250, d_interno * scala , 0, 2*Math.PI) // interno
-  vista.strokeStyle = 'black'
-  vista.stroke()
+  vista.moveTo(0, 250)
+  vista.lineTo(500, 250)
   vista.stroke()
 }
 
-function drawPrimitivo(scala, d_primitivo) {
+function drawFuro(r) {
   vista.beginPath()
-  vista.arc(250, 250, d_primitivo * scala, 0, 2*Math.PI) // primitivo
-  vista.strokeStyle = 'blue'
-  vista.stroke()
+  vista.arc(250, 250, r, 0, 2*Math.PI) // furo
   vista.stroke()
 }
 
-function drawExterno(scala, d_externo) {
+function drawInterno(r_interno) {
   vista.beginPath()
-  vista.arc(250, 250, d_externo * scala, 0, 2*Math.PI) // externo
-  vista.strokeStyle = 'gray'
+  vista.arc(250, 250, r_interno, 0, 2*Math.PI) // interno
   vista.stroke()
 }
 
-function drawRefoco(scala, d_interno, g) {
+function drawPrimitivo(r_primitivo) {
+
   vista.beginPath()
-  vista.arc(250, 250, (d_interno - g) * scala , 0, 2*Math.PI) // reforço
-  vista.strokeStyle = 'black'
+  vista.arc(250, 250, r_primitivo, 6, 1.99*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 5.7, 1.9*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 5.4, 1.8*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 5.1, 1.7*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 4.8, 1.6*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 4.5, 1.5*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 4.2, 1.4*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 3.8, 1.3*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 3.5, 1.2*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 3.2, 1.1*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 2.9, 1*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 2.6, 0.9*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 2.3, 0.8*Math.PI) // primitivo
+  vista.stroke()
+  
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 2, 0.7*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 1.7, 0.6*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 1.4, 0.5*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 1.1, 0.4*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 0.8, 0.3*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 0.4, 0.2*Math.PI) // primitivo
+  vista.stroke()
+
+  vista.beginPath()
+  vista.arc(250, 250, r_primitivo, 0, 0.1 *Math.PI) // primitivo
   vista.stroke()
 }
 
-function drawDc(scala, d) {
+function drawExterno(r_externo) {
   vista.beginPath()
-  vista.arc(250, 250, d * 2 * scala, 0, 2*Math.PI) // dc
-  vista.strokeStyle = 'black'
+  vista.arc(250, 250, r_externo, 0, 2*Math.PI) // externo
   vista.stroke()
 }
 
-function drawChaveta(altura_chaveta, largura_chaveta, d) {
+function drawRefoco(r_interno, g) {
   vista.beginPath()
-  vista.rect(250 - (7.5 + 25), 250 - 7.5,  largura_chaveta,  altura_chaveta)
-  vista.strokeStyle = 'black'
+  vista.arc(250, 250, r_interno - g, 0, 2*Math.PI) // reforço
   vista.stroke()
 }
 
+function drawDc(r) {
+  vista.beginPath()
+  vista.arc(250, 250, 100, 0, 2*Math.PI) // dc
+  vista.stroke()
+}
 
-// drawFuro(scala, d);
-drawInterno(scala, d_interno)
-drawPrimitivo(scala, d_primitivo)
-drawExterno(scala, d_externo)
+function drawChaveta(altura_chaveta, largura_chaveta, r) {
+  vista.beginPath()
+  vista.rect( 250 - 95, 250 - largura_chaveta,  largura_chaveta,  altura_chaveta)
+}
 
-// drawRefoco(scala, d_interno, g)
-// drawDc(scala, d)
-
+drawRefoco(r_interno, g)
+drawInterno(r_interno)
+drawDc()
 drawChaveta(altura_chaveta, largura_chaveta)
+lineCenter()
+
+drawFuro(r);
+
+vista.strokeStyle = 'gray'
+drawExterno(r_externo)
+
+vista.strokeStyle = 'blue'
+drawPrimitivo(r_primitivo)
