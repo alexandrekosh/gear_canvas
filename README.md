@@ -15,6 +15,14 @@ function drawInterno(r_interno) {
 ```
 >cria o diametro externo da engrenagem
 
+## dados Utilizados
+| Nome | Valor |
+|---|---|
+| Numero de dentes (N1) | 25 |
+| Diametro (D1) | 50 |
+| Modulo (M) | 5 |
+| Angulo | 15 |
+
 ## tecnologias
 - Html Canvas
 - JavaScript
